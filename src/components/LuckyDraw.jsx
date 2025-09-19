@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 function LuckyDraw() {
   const [message, setMessage] = useState("Loading your prize...");
 
+  const apiurl = import.meta.env.VITE_MONGO_APIURL;
   useEffect(() => {
-    fetch(apiurl)
+    fetch(`${apiurl/api/draw}`)
       .then((res) => res.json())
       .then((data) => { 
         setMessage(data.message)
