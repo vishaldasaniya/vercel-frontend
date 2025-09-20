@@ -45,7 +45,7 @@ export default function Demo({ eventStartTime }) {
       <div className="flex justify-center items-center space-x-4">
      
         <div className="bg-black text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
-          {timeLeft.hour}
+          {timeLeft.hour}H
         </div>
 
         
@@ -53,7 +53,7 @@ export default function Demo({ eventStartTime }) {
 
 
         <div className="bg-black text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
-          {timeLeft.minute}
+          {timeLeft.minute}M
         </div>
 
         
@@ -61,7 +61,7 @@ export default function Demo({ eventStartTime }) {
 
        
         <div className="bg-black text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
-          {timeLeft.second}
+          {timeLeft.second}S
         </div>
       </div>
     </div>
