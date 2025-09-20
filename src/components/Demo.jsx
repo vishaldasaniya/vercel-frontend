@@ -1,36 +1,69 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-export default function Demo({eventStartTime}) {
-    const [timeLeft, setTimeLeft] = useState("");
+export default function Demo({ eventStartTime }) {
+  const [timeLeft, setTimeLeft] = useState({
+    hour: "00",
+    minute: "00",
+    second: "00",
+  });
 
-    useEffect(()=>{
+  useEffect(() => {
+    const CountDown = () => {
+      const now = new Date();
+      const start = new Date(eventStartTime);
+      const diff = start - now;
 
-      const CountDown=()=>{
-        
-        const now = new Date();
-        const start = new Date(eventStartTime);
-        const diff = start-now;
-
-        if(diff<=0)
-        {
-            setTimeLeft("00:00:00");
-        }
-        else
-        {
-            const hours = Math.floor(diff/(1000*60*60));
-            const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
-            const seconds = Math.floor((diff%(1000*60))/1000);
-            setTimeLeft(`${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`);
-        }
+      if (diff <= 0) {
+        setTimeLeft({
+          hour: "00",
+          minute: "00",
+          second: "00",
+        });
+      } else {
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        setTimeLeft({
+          hour: `${String(hours).padStart(2, "0")}`,
+          minute: `${String(minutes).padStart(2, "0")}`,
+          second: `${String(seconds).padStart(2, "0")}`,
+        });
       }
-      CountDown();
-      const interval = setInterval(CountDown,1000);
-      return  ()=> clearInterval(interval);  
-    },[eventStartTime]);
+    };
+    CountDown();
+    const interval = setInterval(CountDown, 1000);
+    return () => clearInterval(interval);
+  }, [eventStartTime]);
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-yellow-100">
-      <h1 className="text-3xl font-bold mb-4">🎁 Lucky Draw</h1>
-      <p className="text-xl">Event not started yet. CountDown - {timeLeft}</p>
+    <div className="flex flex-col items-center mt-10 space-y-6">
+  
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-yellow-500">
+        🎁 Lucky Draw
+      </h1>
+
+  
+      <div className="flex justify-center items-center space-x-4">
+     
+        <div className="bg-gray-900 text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
+          {timeLeft.hour}
+        </div>
+
+        
+        <div className="text-gray-700 font-mono text-4xl md:text-5xl">:</div>
+
+
+        <div className="bg-gray-900 text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
+          {timeLeft.minute}
+        </div>
+
+        
+        <div className="text-gray-700 font-mono text-4xl md:text-5xl">:</div>
+
+       
+        <div className="bg-gray-900 text-white font-mono text-4xl md:text-5xl px-6 py-4 rounded-lg shadow-lg">
+          {timeLeft.second}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
