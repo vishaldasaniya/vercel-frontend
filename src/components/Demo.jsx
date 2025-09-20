@@ -5,6 +5,8 @@ export default function Demo({eventStartTime}) {
 
     useEffect(()=>{
 
+      const CountDown=()=>{
+        
         const now = new Date();
         const start = new Date(eventStartTime);
         const diff = start-now;
@@ -16,12 +18,14 @@ export default function Demo({eventStartTime}) {
         else
         {
             const hours = Math.floor(diff/(1000*60*60));
-            const minutes = Math.floor((diff%1000*60*60)/(1000*60));
-            const seconds = Math.floor((diff%1000*60)/1000);
+            const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+            const seconds = Math.floor((diff%(1000*60))/1000);
             setTimeLeft(`${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`);
         }
-
-
+      }
+      CountDown();
+      const interval = setInterval(CountDown,1000);
+      return  ()=> clearInterval(interval);  
     },[eventStartTime]);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-yellow-100">
