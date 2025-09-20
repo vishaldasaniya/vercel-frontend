@@ -35,7 +35,7 @@ export default function Demo({ eventStartTime }) {
     return () => clearInterval(interval);
   }, [eventStartTime]);
   return (
-    <div className="flex flex-col items-center  space-y-6 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 min-h-screen">
+    <div className="flex flex-col items-center justify-center space-y-6 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 min-h-screen">
   
       <h1 className="text-3xl md:text-4xl font-bold text-center text-white bg-blue-600 px-4 py-2 rounded-lg shadow-lg">
         🎁 Lucky Draw
