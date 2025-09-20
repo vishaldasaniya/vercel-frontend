@@ -1,11 +1,13 @@
 import React from 'react'
-import LuckyDraw from './components/LuckyDraw'
+import Demo from './components/Demo'
+// import LuckyDraw from './components/LuckyDraw'
 
 
 export default function App() {
   return (
     <div>
-      <LuckyDraw />
+      {/* <LuckyDraw /> */}
+      <Demo eventStartTime="2025-09-22T17:00:00"/>
     </div>
   )
 }
